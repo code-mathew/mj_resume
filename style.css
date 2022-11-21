@@ -115,6 +115,22 @@ svg {
   border-radius: 0 0 3px 3px;
 } */
 
+
+/* To Hide the contents in dom */
+
+.visually-hidden {
+  position: absolute;
+position: absolute !important;
+width: 1px !important;
+height: 1px !important;
+padding: 0 !important;
+margin: -1px !important;
+overflow: hidden !important;
+clip: rect(0,0,0,0) !important;
+white-space: nowrap !important;
+border: 0 !important;
+}
+
 /* Declaring variables */
 
 :root{
@@ -156,6 +172,7 @@ body{
   margin-inline: auto;
   padding: 2rem;
   background-color: var(--clr-primary-op);
+  pointer-events: none;
 }
 
 /* navigation bar */
@@ -181,13 +198,14 @@ body{
 .toggle label{
   display: flex;
   gap: 1rem;
+  pointer-events: visible;
 }
 
-.toggle input{
+/* .toggle input{
   height: 0;
   width: 0;
   position: absolute;
-}
+} */
 .toggle .switch{
   display: block;
   width: var(--toggle-width);
@@ -308,6 +326,7 @@ body{
   text-decoration: none;
   justify-content: space-evenly;
   padding-top: 4rem;
+  pointer-events: visible;
 }
 
 .social-icons .icon, .icon-b{
@@ -319,6 +338,10 @@ body{
 .social-icons .icon-b{
   width: 3rem;
   height: 2.5rem;
+}
+
+.social-icons svg:hover, :focus{
+  fill: var(--clr-secondary);
 }
 
 

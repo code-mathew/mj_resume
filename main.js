@@ -8,7 +8,6 @@ const iconDark = document.querySelector('.icon-dark');
 
 Theme.addEventListener('click', ()=>{
   if(Theme.checked == true){
-
     
     // iconDark.style.display = "initial";
     iconDark.style.opacity = "1";
@@ -25,6 +24,7 @@ Theme.addEventListener('click', ()=>{
     // iconLight.style.height = "0";
     // iconLight.style.width = "0";
     
+// Paricles background
 
     particlesJS("particles-js", {
       particles: {
@@ -81,8 +81,7 @@ Theme.addEventListener('click', ()=>{
       },
       retina_detect: true
     });
-
-    console.log("check")
+    // console.log("check")
   }else{
 
     // iconLight.style.display = "initial";
@@ -157,9 +156,12 @@ Theme.addEventListener('click', ()=>{
       },
       retina_detect: true
     });
+   
   }
   
-})
+});
+
+export default particlesJS;
 
 
 
