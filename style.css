@@ -178,7 +178,7 @@ body{
 /* navigation bar */
 
 .logo{
-  font-size: var(--fs-nav);
+  font-size: clamp(1rem,2.5vw,var(--fs-nav));
   color: var(--clr-font-light);
   font-weight: var(--fw-bold);
   letter-spacing: .125rem;
@@ -187,7 +187,7 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 3rem;
+  padding-bottom: clamp(1.5rem,2.5vw,3rem);
 }
 .logo-letter{
   color: var(--clr-secondary);
@@ -240,8 +240,9 @@ body{
   /* display: none; */
   fill: var(--clr-font-light);
   opacity: 1;
-  width: 28px;
-  height: 28px;
+  width: clamp(20px,2.5vw,28px);
+  /* height: 28px; */
+  aspect-ratio: 1;
   transition: all ease 0.3s;
 }
 .toggle .icon-dark{
@@ -249,8 +250,9 @@ body{
   position:absolute;
   opacity: 0;
   fill:#1a1a1a;
-  width: 28px;
-  height: 28px;
+  width: clamp(20px,2.5vw,28px);
+  /* height: 28px; */
+  aspect-ratio: 1;
   transform: translateX(190%);
   transition: all ease 0.3s;
 }
@@ -267,37 +269,38 @@ body{
 
 
 .dp{
-  width: 23em;
+  width: clamp(0rem,50vw,23rem);
   margin-inline: auto;
   
 }
 
 .name{
-  font-size: var(--fs-title);
+  font-size: clamp(1.5rem,2.5vw,var(--fs-title));
   color: var(--clr-font-light);
   text-align: center;
-  margin-top: 1.25rem;
+  margin-top: clamp(0rem,2.5vw,1.25rem);
   letter-spacing: .25rem;
   font-weight: var(--fw-bold);
-  padding-top: 1.25rem;
+  padding-top: clamp(0rem,2.5vw,1.25rem);
 }
 
 .intro{
-  font-size: var(--fs-content);
+  font-size: clamp(1.2rem,2.5vw,var(--fs-content));
   color: var(--clr-font-light);
   text-align: center;
-  letter-spacing: .25rem;
+  letter-spacing: clamp(0rem,2.5vw,.25rem);
   font-weight: var(--fw-regular);
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-top: clamp(0rem,2.5vw,1.25rem);
+  padding-bottom: clamp(2rem,2.5vw,2.25rem);
 }
 
 .contact{
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   list-style: none;
   justify-content: space-around;
-  padding: 1.25rem 1.25rem;
+  margin: clamp(0rem,2.5vw,1.25rem) 0rem;
   /* height: 4rem; */
   
 
@@ -309,14 +312,15 @@ body{
   align-items: center;
   gap: 1rem;
   color: var(--clr-font-light);
-  font-size: var(--fs-sub-content);
-  letter-spacing: .15rem;
+  font-size: clamp(1rem,2.5vw,var(--fs-sub-content));
+  letter-spacing: clamp(0rem,2.5vw,.05rem);
   
 }
 .contact .icon{
   fill: var(--clr-font-light);
   width: 1.25rem;
-  height: 1.25rem;
+  /* height: 1.25rem; */
+  aspect-ratio: 1;
 }
 
 
@@ -325,18 +329,21 @@ body{
   list-style: none;
   text-decoration: none;
   justify-content: space-evenly;
-  padding-top: 4rem;
+  padding-top: clamp(2rem,2.5vw,4rem);
+  margin-top: clamp(2rem,2.5vw,4rem);
   pointer-events: visible;
+ 
 }
 
 .social-icons .icon, .icon-b{
   fill: var(--clr-font-light);
   width: 2.5rem;
   height: 2.5rem;
+  transition: .3s fill;
   
 }
 .social-icons .icon-b{
-  width: 3rem;
+  width: 2rem;
   height: 2.5rem;
 }
 
@@ -344,4 +351,54 @@ body{
   fill: var(--clr-secondary);
 }
 
+/* Tooltip Creation */
+.social-icons li{
+  position: relative;
+}
+
+.social-icons .behance::before, .linkedin::before, 
+.download::before, .behance::after,  .linkedin::after,
+.download::after{
+  --scale: 0;
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+  transition: .3s transform;
+  transform-origin: bottom center;
+}
+/* Data inside the tooltip */
+.social-icons .behance::before, .linkedin::before, 
+.download::before{
+  content: attr(data-tooltip);
+  text-decoration: none;
+  color: var(--clr-primary-dark);
+  font-size: var(--fs-sub-content);
+  padding: .25rem .5rem;
+  border-radius: .3rem;
+  width: max-content;
+  /* max-width: 100%; */
+  background: var(--clr-font-light);
+  pointer-events: none;
+}
+
+.social-icons .behance:hover::before, .linkedin:hover:before,
+.download:hover:before, .behance:hover::after, .linkedin:hover::after,
+.download:hover::after
+{
+  --scale:1;
+  
+}
+/* To create the arrow-down in the tool tip  */
+.social-icons .behance::after, .linkedin::after,
+.download::after{
+  content: '';
+  /* width: 10px;
+  height: 10px; */
+  /* background-color: var(--clr-font-light); */
+  border: 5px solid transparent;
+  border-top-color: var(--clr-font-light);
+  transform: translateX(-50%) translateY(0%) scale(var(--scale));
+  transform-origin: top center;
+}
 

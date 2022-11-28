@@ -5,7 +5,7 @@ const Theme = document.getElementById('dark');
 const iconLight = document.querySelector('.icon-light');
 const iconDark = document.querySelector('.icon-dark');
 
-
+//to change the  icon according to the toggle
 Theme.addEventListener('click', ()=>{
   if(Theme.checked == true){
     
